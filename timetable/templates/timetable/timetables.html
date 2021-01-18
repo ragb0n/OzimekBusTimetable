@@ -1,6 +1,7 @@
 {% extends 'timetable/main.html' %}
 
 {% block content %}
+
 <br>
 
 <div class="row">
@@ -15,7 +16,7 @@
 
                 {% for route in routes %}
                     <tr>
-                        <td>{{route.name}}</td>
+                        <td><a href="">{{route.name}}</a></td>
                     </tr>
                 {% endfor %}
 
@@ -40,8 +41,8 @@
                         {% load index %}
                         <td>
                             {% for starting_hour in starting_hours %}
-                            <span>
-                                {{ time_list|index:forloop.counter0|index:forloop.parentloop.counter0 }} <!--Customowy tag do iteracji przez listę stworzoną w biews.py-->
+                            <span class="godzina">
+                                {{ time_list|index:forloop.counter0|index:forloop.parentloop.counter0 }} <!--Customowy tag do iteracji przez listę stworzoną w views.py-->
                             </span>
                             &nbsp
                             {% endfor %}

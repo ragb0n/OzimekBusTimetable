@@ -1,6 +1,16 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <img class="navbar-brand" style="max-width: 5%;" src="{% static 'images/logo.png' %}" id="logo">
+  <div id="logo">
+    <img class="navbar-brand" style="max-width: 3vw; display: inline-block; float: left;" src="{% static 'timetable/images/logo.png' %}">
+    <div id="logo_text">
+      <div>
+        Gmina Ozimek
+      </div>
+      <div>
+        <b>Komunikacja Gminna</b>
+      </div>
+    </div>
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
