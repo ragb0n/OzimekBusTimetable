@@ -1,25 +1,30 @@
-        body{
-			background-color: #ebeff5;
-		}
+body{
+	background-color: #ebeff5;
+}
 
-		tr:hover{
-		background-color: #47bcff;
-		transition: .3s;
-		}
+tr:hover{
+    background-color: #47bcff;
+    transition: .3s;
+}
 
-        td a {
-            text-decoration: none;
-            color: black;
-        }
+td a {
+    text-decoration: none;
+    color: black;
+}
 
-        #logo {
-            color: white;
-            font-size: 1vw;
-            margin-left: 3em;
-        }
+#logo {
+    color: white;
+    font-size: 1vw;
+    transition: .3s;
+    margin-left: 3vw;
+}
 
-        #logo_text {
-            display: inline-block;
-            margin-right: 2em;
-            padding-top: 0.5em;
-        }
+#logo:hover {
+    filter: brightness(50%);
+}
+
+#logo_text {
+    display: inline-block;
+    margin-right: 2vw;
+    padding-top: 1vh;
+}

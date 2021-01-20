@@ -3,54 +3,24 @@
 {% block content %}
 
 <br>
-
-<div class="row">
-    <div class="col-md-5">
-        <h5>Istniejące linie:</h5>
-        <hr>
-        <div class="card card-body">
-            <table class="table table-sm">
-                <tr>
-                    <th>Nazwa</th>
-                </tr>
-
-                {% for route in routes %}
+    <div class="row">
+        <div class="col-md-5">
+            <h5>Wybierz interesującą Cię linię:</h5>
+            <hr>
+            <div class="card card-body">
+                <table class="table table-sm">
                     <tr>
-                        <td><a href="">{{route.name}}</a></td>
+                        <th>Nazwa</th>
                     </tr>
-                {% endfor %}
 
-            </table>
+                    {% for route in routes %}
+                        <tr>
+                            <td><a href="{% url 'timetable' route.id %}">{{route.name}}</a></td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
         </div>
     </div>
-    <div class="col-md-7">
-        <h5>Rozkład linii</h5>
-        <hr>
-        <div class="card card-body">
-            <table class="table table-sm">
-                <tr>
-                    <th>Nr przystanku</th>
-                    <th>Przystanek</th>
-                    <th>Godziny odjazdu</th>
-                </tr>
-
-                {% for detail in details %}
-                    <tr>
-                        <td>{{detail.stop_nr}}</td>
-                        <td><b>{{detail.stop_id.town.name}}</b> - {{detail.stop_id}}</td>
-                        {% load index %}
-                        <td>
-                            {% for starting_hour in starting_hours %}
-                            <span class="godzina">
-                                {{ time_list|index:forloop.counter0|index:forloop.parentloop.counter0 }} <!--Customowy tag do iteracji przez listę stworzoną w views.py-->
-                            </span>
-                            &nbsp
-                            {% endfor %}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </table>
-        </div>
-    </div>
-</div>
 {% endblock %}
