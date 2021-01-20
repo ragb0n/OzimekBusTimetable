@@ -1,11 +1,12 @@
 {% extends 'timetable/main.html' %}
 
 {% block content %}
+
 <br>
 
 <div class="row">
     <div class="col-md-5">
-        <h5>Istniejące linie:</h5>
+        <h5>Wybierz interesującą Cię linię:</h5>
         <hr>
         <div class="card card-body">
             <table class="table table-sm">
@@ -15,7 +16,7 @@
 
                 {% for route in routes %}
                     <tr>
-                        <td>{{route.name}}</td>
+                        <td><a href="{% url 'timetable' route.id %}">{{route.name}}</a></td>
                     </tr>
                 {% endfor %}
 
@@ -23,23 +24,29 @@
         </div>
     </div>
     <div class="col-md-7">
-        <h5>Rozkład linii</h5>
+        <h5>Rozkład dla:  {{ selected_route_name }}</h5>
         <hr>
         <div class="card card-body">
             <table class="table table-sm">
                 <tr>
                     <th>Nr przystanku</th>
                     <th>Przystanek</th>
-                    <th>Godzina</th>
+                    <th>Godziny odjazdu</th>
                 </tr>
 
                 {% for detail in details %}
                     <tr>
                         <td>{{detail.stop_nr}}</td>
                         <td><b>{{detail.stop_id.town.name}}</b> - {{detail.stop_id}}</td>
-                        {% for hour in hours %}
-                            <td>{{ detail.time_diff }}</td>
-                        {% endfor %}
+                        {% load index %}
+                        <td>
+                            {% for starting_hour in starting_hours %}
+                            <span class="godzina">
+                                {{ time_list|index:forloop.counter0|index:forloop.parentloop.counter0 }} <!--Customowy tag do iteracji przez listę stworzoną w views.py-->
+                            </span>
+                            &nbsp
+                            {% endfor %}
+                        </td>
                     </tr>
                 {% endfor %}
             </table>
